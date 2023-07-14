@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/grid/simple-grid.min.css">
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<title> Pizza Pamphlet </title>
+</head>
+<body x-data="myCart">
+	<!-- Pizza Cards -->
+	<div class="row">
+		<div class="col-12" id="company-name">
+			<h1> Perfect Pizza </h1>
+		</div>
+	</div>
+
+	<!-- Cart -->
+	<div id="cart"  class="row">
+		<h2 style="text-align: center;"> Shopping Cart</h2>
+		<div class="col-4"></div>
+		<div class="col-4" >
+			<div class="row">
+				<div class="col-3">Small</div>
+				<div class="col-3"><button class="incrementBtn" x-on:click="orderSmall">+</button></div>
+				<div class="col-3"><button class="decrementBtn" x-on:click="smallPizzaTotal > 0? decrementSmall : smallPizzaTotal = 0">-</button></div>
+				<div class="col-3">R<span class="total" x-text="smallPizzaTotal"></span></div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">Medium</div>
+				<div class="col-3"><button class="incrementBtn" x-on:click="orderMedium">+</button></div>
+				<div class="col-3"><button class="decrementBtn" x-on:click="mediumPizzaTotal > 0? decrementMedium : mediumPizzaTotal = 0">-</button></div>
+				<div class="col-3">R<span class="total" x-text="mediumPizzaTotal"></span></div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">Large</div>
+				<div class="col-3"><button class="incrementBtn" x-on:click="orderLarge">+</button></div>
+				<div class="col-3"><button class="decrementBtn" x-on:click="largePizzaTotal > 0? decrementLarge : largePizzaTotal = 0">-</button></div>
+				<div class="col-3">R<span class="total" x-text="largePizzaTotal"></span></div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">Total Due : </div>
+				<div class="col-3"></div>
+				<div class="col-3"></div>
+				<div class="col-3">R<span class="total" id="amount-due-span" x-text="totalAmountDue"></span></div>
+			</div>
+
+			<button id="checkout" x-show="totalAmountDue <= 0 ? false : true" x-on:click="checkout">Check Out</button>
+			<!--- Message element -->
+			<h3 id="messge" x-show="showMessage" x-text="message"></h3>
+			<!-- Payment div -->
+			<div id="payment-div" x-show="checkedOut">
+				<span>Enter payment amount : </span>
+				<input id="payment-input" type="number" x-model="enteredAmount">
+				<button id="payBtn" x-on:click="handlePayment(enteredAmount)">Pay</button>
+			</div>
+		</div>
+		<div class="col-4"></div>
+	</div>
+
+	<div class="row" id="container">
+		<div class="col-4 pizza-div" id="small-pizza">
+			<img src="images/pizza-one.png" class="pizza-img">
+			<h3> Small Pizza </br> R49.00 </h3>
+			<p class="pizza-text">
+				314.16 square centimeters of delicious pizza with single mozzarella cheese and a topping of your choosing at a very affordable price.
+			</p>
+			<button x-on:click="orderSmall" class="orderBtn">Order</button>
+		</div>
+
+		<div class="col-4 pizza-div" id="medium-pizza">
+			<img src="images/pizza-three.png" class="pizza-img">
+			<h3> Medium Pizza </br> R89.00 </h3>
+			<p class="pizza-text">
+				490.90 square centimeters of traditionally baked pizza with single gouda cheese layer, and of cause you can add your desired layers of more cheese if you will. There's a wide range flavours and toppings to choose from.
+			</p>
+			<button x-on:click="orderMedium" class="orderBtn">Order</button>
+		</div>
+
+		<div class="col-4 pizza-div" id="large-pizza">
+			<img src="images/pizza-two.png" class="pizza-img">
+			<h3> Large Pizza </br> R129.00 </h3>
+			<p class="pizza-text">
+				706.85 square centimeters is the largest pizza size on offer @Perfect_Pizza and offers the best pizza-consumption experience with the widest range to choose from all the way from cheeses, flavours and toppings. 
+				You even get a free 330ml can of soft drink of your choosing when you buy this pizza.
+			</p>
+			<button x-on:click="orderLarge" class="orderBtn">Order</button>
+		</div>
+	</div>
+
+	<div class="row" id="footer">
+		<div class="col-6">
+			<h5> (+27)79-0262-643</h5>
+			<p class="footer-text"> 
+				facebook.com/perfect_pizza </br>
+				@perfect_pizza </br>
+				perfectpizza@yahoo.com
+			</p>
+		</div>
+		<div class="col-6">
+			<p class="footer-text">
+			328 Chief Holomisa Street, </br>
+			Zimbane A/A </br>
+			5099 </br>
+			Mthatha
+		</div>
+	</div>
+	<script type="text/javascript" src="Cart.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
