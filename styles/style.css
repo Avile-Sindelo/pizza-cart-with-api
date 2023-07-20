@@ -135,6 +135,24 @@ h3{
 	border-radius: 5px;
 	color: beige;
 }
+[x-cloak]{
+	display: none !important;
+}
+
+td{
+	text-align: center;
+	color: #7ED3B2;
+	font-size: 110%;
+}
+
+th{
+	font-size: 120%;
+}
+
+th{
+	background-color: #1E6F5C;
+	color: beige;
+}
 
 @media screen and (max-width: 350px){
 	#container{
