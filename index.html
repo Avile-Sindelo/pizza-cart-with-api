@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<link rel="stylesheet" type="text/css" href="styles/grid/simple-grid.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	<title> Pizza Pamphlet </title>
 </head>
@@ -112,11 +112,19 @@
 						<td x-text="pizza.flavour"></td>
 						<td x-text="pizza.size"></td>
 						<td x-text="pizza.price"></td>
-						<td> <button class="buyBtnApi" x-on:click="test()"> Buy </td>
+						<td> <button class="buyBtnApi" x-on:click="addToCart(pizza.id)"> Buy </td>
 					</tr>
 				</template>
 			</tbody>
 		</table>
+
+		<!-- display the api cart -->
+		<div x-data="getCart()">
+			<h2>API Shopping Cart</h2>
+			<template x-for="p in pizzas">
+				<p x-text="p.flavour"></p>
+			</template>
+		</div>
 	</div>
 
 	<div class="row" id="footer">

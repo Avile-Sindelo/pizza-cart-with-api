@@ -7,3 +7,5 @@ document.addEventListener('alpine:init', function(){
 document.addEventListener('alpine:init', function(){
     Alpine.data('apiCart', CartWithApi);
 });
+
+
